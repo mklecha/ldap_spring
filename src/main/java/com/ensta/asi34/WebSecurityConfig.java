@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
 
 /**
- *
  * @author trident
  */
 @Configuration
@@ -24,18 +23,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .fullyAuthenticated()
                 .and()
-                .formLogin();
+                .formLogin().loginPage("/login").permitAll();
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.ldapAuthentication()
-                    .userDnPatterns("cn={0},ou=people")
-                    .groupSearchBase("ou=groups")
-                    .contextSource()
-                        .url("ldap://104.155.89.33:389/dc=ensta,dc=fr")
-                        .and()
-                    .passwordCompare()
+        auth.ldapAuthentication()
+                .userDnPatterns("cn={0},ou=people")
+                .groupSearchBase("ou=groups")
+                .contextSource()
+                .url("ldap://104.155.89.33:389/dc=ensta,dc=fr")
+                .and()
+                .passwordCompare()
                         .passwordAttribute("userPassword");
     }
 
