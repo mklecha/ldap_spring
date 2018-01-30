@@ -30,10 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
             auth.ldapAuthentication()
-                    .userDnPatterns("uid={0},ou=people")
+                    .userDnPatterns("cn={0},ou=people")
                     .groupSearchBase("ou=groups")
                     .contextSource()
-                        .url("ldap://localhost:8389/dc=springframework,dc=org")
+                        .url("ldap://104.155.89.33:389/dc=ensta,dc=fr")
                         .and()
                     .passwordCompare()
                         .passwordAttribute("userPassword");
