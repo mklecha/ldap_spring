@@ -1,4 +1,4 @@
-package com.ensta.asi34.data;
+package com.ensta.asi34.model.dto;
 
 public class UserInfoDTO {
     private String name;

@@ -1,7 +1,7 @@
 package com.ensta.asi34.controllers;
 
-import com.ensta.asi34.data.UserInfoDTO;
-import com.ensta.asi34.data.UserPassDTO;
+import com.ensta.asi34.model.dto.UserInfoDTO;
+import com.ensta.asi34.model.dto.UserPassDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
