@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ensta.asi34;
+package com.ensta.asi34.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,4 +18,5 @@ public class ViewController {
     public String index() {
         return "Welcome to the home page!";
     }
+
 }
