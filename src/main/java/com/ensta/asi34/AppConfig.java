@@ -5,37 +5,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.ldap.repository.config.EnableLdapRepositories;
+import org.springframework.ldap.core.ContextSource;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 
 @Configuration
-@PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = {"com.ensta.asi34.*"})
-@Profile("default")
-@EnableLdapRepositories(basePackages = "com.ensta.asi34.**")
-public class AppConfig {
-
-    @Autowired
-    private Environment env;
+@EnableLdapRepositories
+class AppConfig {
 
     @Bean
-    public LdapContextSource contextSource() {
-        LdapContextSource contextSource = new LdapContextSource();
-        contextSource.setUrl(env.getRequiredProperty("ldap.url"));
-        contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));
-        contextSource.setUserDn(env.getRequiredProperty("ldap.principal"));
-        contextSource.setPassword(env.getRequiredProperty("ldap.password"));
-        return contextSource;
+    ContextSource contextSource() {
+
+        LdapContextSource ldapContextSource = new LdapContextSource();
+        ldapContextSource.setUrl("ldap://localhost:8389");
+        return ldapContextSource;
     }
 
     @Bean
-    public LdapTemplate ldapTemplate() {
-        return new LdapTemplate(contextSource());
+    LdapTemplate ldapTemplate(ContextSource contextSource) {
+        return new LdapTemplate(contextSource);
     }
-
-    @Bean
-    public LdapClient ldapClient() {
-        return new LdapClient();
-    }
-
 }

@@ -5,6 +5,9 @@
  */
 package com.ensta.asi34.controllers;
 
+import com.ensta.asi34.model.User;
+import com.ensta.asi34.model.repository.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,8 +16,16 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ViewController {
+    
+    @Autowired 
+    PersonRepository repository;
+    
     @GetMapping("/")
     public String index() {
+        Iterable<User> users = repository.findAll();
+        for(User u: users){
+            System.out.println(u.getUsername());
+        }
         return "index";
     }
 
