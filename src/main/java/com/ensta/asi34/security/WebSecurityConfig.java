@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().
                 authorizeRequests()
                 .antMatchers("/css/**", "/fonts/**", "/images/**", "/js/**", "/vendor/**").permitAll()
-                .anyRequest().fullyAuthenticated()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll();
     }
@@ -29,13 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.ldapAuthentication()
-                .userDnPatterns("cn={0},ou=people")
+                .userDnPatterns("uid={0},ou=people")
                 .groupSearchBase("ou=groups")
                 .contextSource()
-                .url("ldap://104.155.89.33:389/dc=ensta,dc=fr")
+                .url("ldap://localhost:8389/dc=springframework,dc=org")
                 .and()
                 .passwordCompare()
-                .passwordAttribute("userPassword");
+                .passwordAttribute("userpassword");
     }
 
 }
