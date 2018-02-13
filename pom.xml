@@ -69,6 +69,24 @@
 		    <artifactId>aerogear-otp-java</artifactId>
 		    <version>1.0.0</version>
 		</dependency>
+		<dependency>
+		  <groupId>com.warrenstrange</groupId>
+		  <artifactId>googleauth</artifactId>
+		  <version>1.1.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/fi.jasoft/dragdroplayouts -->
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>core</artifactId>
+		    <version>2.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>javase</artifactId>
+		    <version>2.0</version>
+		</dependency>
+		
 
         <!-- FREEMARKER -->
         <dependency>

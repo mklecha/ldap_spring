@@ -1,7 +1,11 @@
 package com.ensta.asi34.controllers;
 
+import com.ensta.asi34.model.User;
 import com.ensta.asi34.model.dto.UserInfoDTO;
 import com.ensta.asi34.model.dto.UserPassDTO;
+import com.ensta.asi34.model.repository.PersonRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
+	
+	@Autowired 
+    PersonRepository repository;
 
     @PostMapping(path = "/changeInfo")
     public String changeInfo(UserInfoDTO userInfo) {
@@ -45,5 +52,18 @@ public class UserController {
             model.addAttribute("error", "");
         }
         return "passwordRemind/passwordChanged";
+    }
+    
+    @PostMapping(path = "/activateAuth")
+    public String activateAuth(Model model, @RequestParam String name) {
+    	
+    	Iterable<User> users = repository.findAll();
+        for(User u: users){
+        	if(name.equals(u.getUsername())){
+        		u.setUsing2FA(true);
+        		System.out.println("Activado");
+        	}
+        }
+        return "redirect:/";
     }
 }

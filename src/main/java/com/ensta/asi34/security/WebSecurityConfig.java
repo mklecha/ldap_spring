@@ -16,11 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @author trident
  */
 @Configuration
-@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Autowired
-    private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -30,13 +26,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .authenticationDetailsSource(authenticationDetailsSource)
-                .loginPage("/login").permitAll();
+                .loginPage("/login")
+                .defaultSuccessUrl("/success", true).permitAll();
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.ldapAuthentication()
+        auth
+        .ldapAuthentication()
                 .userDnPatterns("uid={0},ou=people")
                 .groupSearchBase("ou=groups")
                 .contextSource()
