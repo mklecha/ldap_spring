@@ -27,7 +27,7 @@
         </header>
         <div class="container">
             <div class="jumbotron">
-                <h1>Hello, user!</h1>
+                <h1>Hello, ${loggedUser.username}!</h1>
             </div>
         </div>
     </body>

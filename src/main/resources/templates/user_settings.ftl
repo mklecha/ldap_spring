@@ -33,15 +33,15 @@
                     <form method="post" action="/changeInfo">
                       <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name">
+                        <input type="text" class="form-control" name="name" id="name" value="${loggedUser.name}" required>
                       </div>
                       <div class="form-group">
                         <label for="surname">Surname:</label>
-                        <input type="text" class="form-control" id="surname">
+                        <input type="text" class="form-control" name="surname" id="surname" value="${loggedUser.surname}" required>
                       </div>
                       <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email">
+                        <label for="mail">Email:</label>
+                        <input type="email" class="form-control" name="mail" id="mail" <#if loggedUser.mail??>value="${loggedUser.mail}"</#if> required>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -50,18 +50,18 @@
             <div class="jumbotron">
                 <div class="container">
                     <h1>Change security information</h1>
-                    <form method="post" action="/changeInfo">
+                    <form method="post" action="/changePass">
                       <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password">
+                        <label for="password">New password:</label>
+                        <input type="password" class="form-control" id="password" name="password" >
                       </div>
                       <div class="form-group">
-                        <label for="secret">Secret question:</label>
-                        <input type="text" class="form-control" id="secret">
+                        <label for="question">Secret question:</label>
+                        <input type="text" class="form-control" id="question" name="question" required <#if loggedUser.question??> value="${loggedUser.question}"</#if>>
                       </div>
                       <div class="form-group">
-                        <label for="secretAnswer">Secret Answer:</label>
-                        <input type="text" class="form-control" id="secretAnswer">
+                        <label for="answer">Secret Answer:</label>
+                        <input type="text" class="form-control" id="answer" name="answer" required <#if loggedUser.answer??>value="${loggedUser.answer}"</#if>>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

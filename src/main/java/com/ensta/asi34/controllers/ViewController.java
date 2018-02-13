@@ -9,6 +9,7 @@ import com.ensta.asi34.model.User;
 import com.ensta.asi34.model.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -21,7 +22,7 @@ public class ViewController {
     UserRepository repository;
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
         return "index";
     }
     

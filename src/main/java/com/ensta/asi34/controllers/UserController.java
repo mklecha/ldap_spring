@@ -28,17 +28,18 @@ public class UserController {
         user.setSurname(userInfo.getSurname());
         user.setMail(userInfo.getMail());
         repository.save(user);
-        return "redirect:/";
+        return "redirect:/userSettings";
     }
 
     @PostMapping(path = "/changePass")
     public String changePass(UserPassDTO userPass) {
         User user = securityService.findLoggedInUser();
-        user.setPassword(userPass.getPassword());
+        if(userPass.getPassword()!=null)
+            user.setPassword(userPass.getPassword());
         user.setQuestion(userPass.getQuestion());
         user.setAnswer(userPass.getAnswer());
         repository.save(user);
-        return "redirect:/";
+        return "redirect:/userSettings";
     }
 
     @GetMapping(path = "/passwordRemind")
