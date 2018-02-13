@@ -6,7 +6,8 @@
 package com.ensta.asi34.controllers;
 
 import com.ensta.asi34.model.User;
-import com.ensta.asi34.model.repository.PersonRepository;
+import com.ensta.asi34.model.repository.UserRepository;
+import com.ensta.asi34.security.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +19,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ViewController {
 
     @Autowired
-    PersonRepository repository;
+    UserRepository repository;
+
+    @Autowired
+    SecurityService securityService;
 
     @GetMapping("/")
     public String index() {
-        Iterable<User> users = repository.findAll();
-        for (User u : users) {
-            System.out.println(u);
-        }
+        User loggedUser = securityService.findLoggedInUser();
         return "index";
     }
 

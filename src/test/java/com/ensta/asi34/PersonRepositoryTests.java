@@ -6,8 +6,7 @@
 package com.ensta.asi34;
 
 import com.ensta.asi34.model.User;
-import com.ensta.asi34.model.repository.PersonRepository;
-import java.util.List;
+import com.ensta.asi34.model.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration
 public class PersonRepositoryTests {
 
-    @Autowired PersonRepository repository;
+    @Autowired
+    UserRepository repository;
 
     @Test
     public void readAll() {

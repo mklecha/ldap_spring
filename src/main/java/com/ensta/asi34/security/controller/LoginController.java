@@ -1,4 +1,4 @@
-package com.ensta.asi34.security;
+package com.ensta.asi34.security.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

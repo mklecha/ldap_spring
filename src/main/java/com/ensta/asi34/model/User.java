@@ -14,8 +14,8 @@ public class User {
     @Id
     private Name id;
 
-    @Attribute(name = "cn")
-    @DnAttribute(value = "cn", index = 2)
+    @Attribute(name = "uid")
+    @DnAttribute(value = "cn", index = 3)
     private String username;
 
     @Attribute(name = "sn")
