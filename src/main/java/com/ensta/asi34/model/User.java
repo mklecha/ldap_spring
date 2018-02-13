@@ -24,10 +24,10 @@ public class User {
     @Attribute(name = "userPassword")
     private String password;
 
-    @Attribute(name = "st")
+    @Attribute(name = "secretQuestion")
     private String question;
 
-    @Attribute(name = "l")
+    @Attribute(name = "secretResponse")
     private String answer;
 
     public Name getId() {
