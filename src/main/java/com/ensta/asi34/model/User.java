@@ -15,10 +15,10 @@ public class User {
     private Name id;
 
     @Attribute(name = "uid")
-    @DnAttribute(value = "cn", index = 3)
+    @DnAttribute(value = "uid", index = 3)
     private String username;
 
-    @Attribute(name = "gn")
+    @Attribute(name = "cn")
     private String name;
 
     @Attribute(name = "sn")

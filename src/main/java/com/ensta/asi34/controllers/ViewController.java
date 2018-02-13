@@ -30,6 +30,7 @@ public class ViewController {
         User user = new User();
         user.setUsername("michal");
         user.setQuestion("q");
+        user.setName("name");
         user.setSurname("surname");
         user.setAnswer("a");
         user = repository.save(user);
