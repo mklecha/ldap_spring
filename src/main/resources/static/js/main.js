@@ -34,6 +34,16 @@
         return check;
     });
 
+    $('.validate-password').on('submit', function () {
+        var check = $('#password').val() === $('#repeat-password').val();
+
+        if (!check) {
+            showValidate($('#repeat-password'));
+        }
+
+        return check;
+    });
+
 
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){

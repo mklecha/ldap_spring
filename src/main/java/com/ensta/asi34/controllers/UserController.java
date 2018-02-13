@@ -34,7 +34,7 @@ public class UserController {
     @PostMapping(path = "/changePass")
     public String changePass(UserPassDTO userPass) {
         User user = securityService.findLoggedInUser();
-        if(userPass.getPassword()!=null)
+        if (userPass.getPassword() != null)
             user.setPassword(userPass.getPassword());
         user.setQuestion(userPass.getQuestion());
         user.setAnswer(userPass.getAnswer());
@@ -43,13 +43,17 @@ public class UserController {
     }
 
     @GetMapping(path = "/passwordRemind")
-    public String passwordRemind(Model model, @RequestParam(required = false) String username) {
+    public String passwordRemind(Model model, @RequestParam(required = false) String username, @RequestParam(required = false) String error) {
         if (username != null) {
+            model.addAttribute("username", username);
             User user = repository.findByUsername(username);
             if (user != null) {
                 model.addAttribute("question", user.getQuestion());
-                model.addAttribute("username", username);
             }
+        }
+
+        if (error != null) {
+            model.addAttribute("error", "");
         }
 
         return "passwordRemind/passwordRemind";
@@ -61,10 +65,11 @@ public class UserController {
         if (user != null && checkAnswer(user.getAnswer(), answer)) {
             user.setPassword(password);
             repository.save(user);
-        } else {
-            model.addAttribute("error", "");
+            model.addAttribute("username", username);
+            return "passwordRemind/passwordChanged";
         }
-        return "passwordRemind/passwordChanged";
+        return "redirect:/passwordRemind?username=" + username + "&error";
+
     }
 
 

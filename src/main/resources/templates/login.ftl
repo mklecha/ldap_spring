@@ -76,7 +76,7 @@
 							Forgotten password?
 						</span>
 
-                    <a class="txt2" href="#">
+                    <a class="txt2" href="/passwordRemind">
                         Click here
                     </a>
                 </div>
