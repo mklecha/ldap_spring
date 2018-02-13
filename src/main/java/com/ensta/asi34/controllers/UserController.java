@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
+
     @PostMapping(path = "/changeInfo")
     public String changeInfo(UserInfoDTO userInfo) {
         System.out.println("Update name to " + userInfo.getName() + ", surname to " + userInfo.getSurname() + ", mail to " + userInfo.getMail());

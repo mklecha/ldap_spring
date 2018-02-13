@@ -16,16 +16,28 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ViewController {
-    
-    @Autowired 
+
+    @Autowired
     PersonRepository repository;
-    
+
     @GetMapping("/")
     public String index() {
         Iterable<User> users = repository.findAll();
-        for(User u: users){
-            System.out.println(u.getUsername());
+        for (User u : users) {
+            System.out.println(u);
         }
+        return "index";
+    }
+
+    @GetMapping("/add")
+    public String add() {
+        User user = new User();
+        user.setUsername("michal");
+        user.setQuestion("q");
+        user.setSurname("surname");
+        user.setAnswer("a");
+        user = repository.save(user);
+        System.out.println(user);
         return "index";
     }
 

@@ -37,5 +37,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordCompare()
                 .passwordAttribute("userpassword");
     }
-
 }
