@@ -14,22 +14,8 @@ import org.springframework.ldap.core.support.LdapContextSource;
 @SpringBootApplication
 @ComponentScan
 @EnableAutoConfiguration
-@Configuration
-@EnableLdapRepositories
 public class Asi34Application {
     
-    @Bean
-    ContextSource contextSource() {
-
-        LdapContextSource ldapContextSource = new LdapContextSource();
-        ldapContextSource.setUrl("ldap://localhost:8389");
-        return ldapContextSource;
-    }
-
-    @Bean
-    LdapTemplate ldapTemplate(ContextSource contextSource) {
-        return new LdapTemplate(contextSource);
-    }
 
     public static void main(String[] args) {
             SpringApplication.run(Asi34Application.class, args);

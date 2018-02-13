@@ -27,6 +27,8 @@
             </div>
         </header>
         <div class="container">
+            <a href="/googleAuthenticatorQRCode"> View Google Authenticator QR Code</a>
+
             <div class="jumbotron">
                 <div class="container">
                     <h1>Change user info</h1>

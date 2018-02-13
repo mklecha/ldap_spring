@@ -1,16 +1,23 @@
 package com.ensta.asi34.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Base64;
+import java.util.Random;
 import org.springframework.ldap.odm.annotations.Attribute;
 import org.springframework.ldap.odm.annotations.DnAttribute;
 import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 
 import javax.naming.Name;
+import org.springframework.ldap.odm.annotations.Attribute.Type;
 
 @Entry(
         base = "ou=people,dc=springframework,dc=org",
         objectClasses = {"person", "inetOrgPerson", "top"})
 public class User {
+    
+    private static final int GOOGLE_AUTH_SECRET_LENGTH_BYTES = 16;
+    
     @Id
     private Name id;
 
@@ -27,14 +34,23 @@ public class User {
     @Attribute(name = "mail")
     private String mail;
 
-    @Attribute(name = "userPassword")
-    private String password;
+    @Attribute(name = "userPassword", type = Type.BINARY)
+    @JsonIgnore
+    private byte [] password;
 
     @Attribute(name = "secretQuestion")
     private String question;
 
     @Attribute(name = "secretResponse")
     private String answer;
+    
+    @Attribute(name = "info")
+    @JsonIgnore
+    private String gAuthSecret;
+    
+    public User(){
+        generateAuthSecret();
+    }
 
     public Name getId() {
         return id;
@@ -77,11 +93,11 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return new String(password);
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password.getBytes();
     }
 
     public String getQuestion() {
@@ -100,6 +116,25 @@ public class User {
         this.answer = answer;
     }
 
+    @JsonIgnore
+    public String getgAuthSecret() {
+        if(gAuthSecret==null)
+            generateAuthSecret();
+        return gAuthSecret;
+    }
+
+    public void setgAuthSecret(String gAuthSecret) {
+        this.gAuthSecret = gAuthSecret;
+    }
+    
+    private void generateAuthSecret(){
+        Random r = new Random();
+        byte[] secret = new byte[GOOGLE_AUTH_SECRET_LENGTH_BYTES];
+        r.nextBytes(secret);
+        this.gAuthSecret = Base64.getEncoder().encodeToString(secret);
+    }
+    
+
     @Override
     public String toString() {
         return "User{" +
@@ -111,6 +146,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
+                ", gAuthSecret='" + gAuthSecret + '\'' +
                 '}';
     }
 }
