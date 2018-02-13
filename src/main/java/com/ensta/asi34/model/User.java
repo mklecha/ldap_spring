@@ -15,11 +15,17 @@ public class User {
     private Name id;
 
     @Attribute(name = "uid")
-    @DnAttribute(value = "cn", index = 3)
+    @DnAttribute(value = "uid", index = 3)
     private String username;
+
+    @Attribute(name = "cn")
+    private String name;
 
     @Attribute(name = "sn")
     private String surname;
+
+    @Attribute(name = "mail")
+    private String mail;
 
     @Attribute(name = "userPassword")
     private String password;
@@ -46,12 +52,28 @@ public class User {
         this.username = username;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getSurname() {
         return surname;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPassword() {
@@ -83,7 +105,9 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
