@@ -56,6 +56,11 @@
                     <input class="input100" type="password" name="password">
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
+                
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" name="code">
+                    <span class="focus-input100" data-placeholder="Google Authenticator Code"></span>
+                </div>
 
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">

@@ -17,8 +17,28 @@ public class User {
     String username;
     private @Attribute(name = "userPassword")
     String password;
+    private @Attribute(name = "isUsing2FA")
+    boolean isUsing2FA;
+    private @Attribute(name = "secret")
+    String secret;
 
-    public Name getId() {
+    public boolean isUsing2FA() {
+		return isUsing2FA;
+	}
+
+	public void setUsing2FA(boolean isUsing2FA) {
+		this.isUsing2FA = isUsing2FA;
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+
+	public Name getId() {
         return id;
     }
 

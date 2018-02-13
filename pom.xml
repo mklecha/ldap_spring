@@ -64,6 +64,11 @@
             <groupId>com.unboundid</groupId>
             <artifactId>unboundid-ldapsdk</artifactId>
         </dependency>
+        <dependency>
+		    <groupId>org.jboss.aerogear</groupId>
+		    <artifactId>aerogear-otp-java</artifactId>
+		    <version>1.0.0</version>
+		</dependency>
 
         <!-- FREEMARKER -->
         <dependency>

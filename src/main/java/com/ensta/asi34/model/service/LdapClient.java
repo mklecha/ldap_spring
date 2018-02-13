@@ -1,11 +1,13 @@
 package com.ensta.asi34.model.service;
 
+import org.jboss.aerogear.security.otp.api.Base32;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.ldap.core.*;
 import org.springframework.ldap.support.LdapNameBuilder;
 
 import javax.naming.Name;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
@@ -47,6 +49,7 @@ public class LdapClient {
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
+        context.setAttributeValue("secret", Base32.random());
 
         ldapTemplate.bind(context);
     }

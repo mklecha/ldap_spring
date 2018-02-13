@@ -5,17 +5,23 @@
  */
 package com.ensta.asi34.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
  * @author trident
  */
 @Configuration
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+    private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().
@@ -23,7 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**", "/fonts/**", "/images/**", "/js/**", "/vendor/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll();
+                .formLogin()
+                .authenticationDetailsSource(authenticationDetailsSource)
+                .loginPage("/login").permitAll();
     }
 
     @Override
