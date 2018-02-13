@@ -1,33 +1,37 @@
-<h1>Change user info</h1>
-<form method="post" action="/changeInfo">
-    <label>
-        Name
-        <input name="name">
-    </label>
-    <label>
-        Surname
-        <input name="surname">
-    </label>
-    <label>
-        Mail
-        <input name="mail">
-    </label>
-    <button>Save</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-<h1>Change user password</h1>
-<form method="post" action="/changePass">
-    <label>
-        Password
-        <input name="password" type="password">
-    </label>
-    <label>
-        Question
-        <input name="question">
-    </label>
-    <label>
-        Answer
-        <input name="answer">
-    </label>
-    <button>Save</button>
-</form>
+    </head>
+    <body>
+        <header class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <a class="navbar-brand" href="/">ENSTA LDAP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/userSettings">User Settings</a>
+                </li>
+              </ul>
+            </div>
+        </header>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Hello, user!</h1>
+            </div>
+        </div>
+    </body>
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>

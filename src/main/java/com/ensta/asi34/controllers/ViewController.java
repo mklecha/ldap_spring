@@ -26,9 +26,15 @@ public class ViewController {
 
     @GetMapping("/")
     public String index() {
-        User loggedUser = securityService.findLoggedInUser();
         return "index";
     }
+    
+    @GetMapping("/userSettings")
+    public String userSettings() {
+        return "user_settings";
+    }
+    
+    
 
     @GetMapping("/add")
     public String add() {
