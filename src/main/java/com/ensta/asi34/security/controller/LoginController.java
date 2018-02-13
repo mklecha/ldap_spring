@@ -14,7 +14,7 @@ public class LoginController {
             model.addAttribute("error", error);
         }
         if (logout != null) {
-            model.addAttribute("error", error);
+            model.addAttribute("logout", logout);
         }
         return "login";
     }

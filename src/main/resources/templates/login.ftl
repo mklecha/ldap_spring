@@ -32,14 +32,19 @@
     <div class="container-login100">
         <div class="wrap-login100">
             <form class="login100-form validate-form" method="post" action="/login">
-					<span class="login100-form-title p-b-26">
-						Welcome
-					</span>
-					<#if error??>
-					    <span class="login100-form-title p-b-26" style="color:red;">
-							Error
-						</span>
-                    </#if>
+                <#if logout??>
+                    <span class="login100-form-title p-b-26" style="color:blue;">
+                        Logged out
+                    </span>
+                </#if>
+                <span class="login100-form-title p-b-26">
+                    Welcome
+                </span>
+                <#if error??>
+                    <span class="login100-form-title p-b-26" style="color:red;">
+                        Wrong login or password
+                    </span>
+                </#if>
                 <span class="login100-form-title p-b-48">
 						<i class="zmdi zmdi-font"></i>
 					</span>
