@@ -50,7 +50,7 @@
 					</span>
 
                 <div class="wrap-input100 validate-input">
-                    <input class="input100" type="text" name="username" value="ben">
+                    <input class="input100" type="text" name="username">
                     <span class="focus-input100" data-placeholder="UID"></span>
                 </div>
 
@@ -58,8 +58,16 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="password" value="ben">
+                    <input class="input100" type="password" name="password">
                     <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter verification code">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+                    <input class="input100" type="password" name="code">
+                    <span class="focus-input100" data-placeholder="Verification code"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
