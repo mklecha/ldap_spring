@@ -32,10 +32,8 @@
 </header>
 <div class="container">
     <div class="jumbotron">
-        <a href="/googleAuthenticatorQRCode"> View Google Authenticator QR Code</a>
-    </div>
-    <div class="jumbotron">
         <div class="container">
+            <<<<<<< HEAD
             <h1>Change user info</h1>
             <form method="post" action="/changeInfo">
                 <div class="form-group">
@@ -46,6 +44,31 @@
                     <label for="surname">Surname:</label>
                     <input type="text" class="form-control" name="surname" id="surname" value="${loggedUser.surname}"
                            required>
+                    =======
+                    <a href="/googleAuthenticatorQRCode"> View Google Authenticator QR Code</a>
+
+                    <div class="jumbotron">
+                        <div class="container">
+                            <h1>Change user info</h1>
+                            <form method="post" action="/changeInfo">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" name="name" id="name"
+                                           value="${loggedUser.name}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="surname">Surname:</label>
+                                    <input type="text" class="form-control" name="surname" id="surname"
+                                           value="${loggedUser.surname}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mail">Email:</label>
+                                    <input type="email" class="form-control" name="mail" id="mail"
+                                           <#if loggedUser.mail??>value="${loggedUser.mail}"</#if> required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            >>>>>>> andrii
                 </div>
                 <div class="form-group">
                     <label for="mail">Email:</label>

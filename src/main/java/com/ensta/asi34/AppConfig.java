@@ -22,9 +22,7 @@ class AppConfig {
     @Bean
     ContextSource contextSource() {
         LdapContextSource ldapContextSource = new LdapContextSource();
-        ldapContextSource.setUserDn("cn=admin,dc=ensta,dc=fr");
-        ldapContextSource.setPassword("password");
-        ldapContextSource.setUrl("ldap://104.155.89.33:389");
+        ldapContextSource.setUrl("ldap://localhost:8389");
         return ldapContextSource;
     }
 

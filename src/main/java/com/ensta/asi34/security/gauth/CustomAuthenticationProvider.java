@@ -26,24 +26,31 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider{
     @Override
     public Authentication authenticate(Authentication auth) {
         CustomWebAuthenticationDetails details = (CustomWebAuthenticationDetails)auth.getDetails();
-        User user = userRepository.findByUsername(auth.getName());
+        System.out.println(auth.getName());
+        System.out.println(auth.getCredentials().toString());
+        System.out.println(details.getVerificationCode());
         
-        System.err.println(user);
-       
+        User user = userRepository.findByUsername(auth.getName());
+
+        System.out.println(user);
+        System.out.println(user.getPassword());
+
+
         if ((user == null)) {
             throw new BadCredentialsException("Invalid username or password");
         }
         
         if(!user.getPassword().equals(auth.getCredentials().toString()))
             throw new BadCredentialsException("Invalid username or password");
-        
+
+        System.out.println("Verification code" + details.getVerificationCode());
         Totp totp = new Totp(user.getgAuthSecret());
         if (!isValidLong(details.getVerificationCode()) || !totp.verify(details.getVerificationCode())) {
             System.out.println("fuck");
             throw new BadCredentialsException("Invalid verfication code");
         }
-        
-        return new UsernamePasswordAuthenticationToken(user, auth.getCredentials(), auth.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(
+                user, auth.getCredentials(), auth.getAuthorities());
     }
  
     private boolean isValidLong(String code) {

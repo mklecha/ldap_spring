@@ -1,18 +1,18 @@
 package com.ensta.asi34.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.Base64;
-import java.util.Random;
 import org.springframework.ldap.odm.annotations.Attribute;
+import org.springframework.ldap.odm.annotations.Attribute.Type;
 import org.springframework.ldap.odm.annotations.DnAttribute;
 import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 
 import javax.naming.Name;
-import org.springframework.ldap.odm.annotations.Attribute.Type;
+import java.util.Base64;
+import java.util.Random;
 
 @Entry(
-        base = "ou=people,dc=ensta,dc=fr",
+        base = "ou=people,dc=springframework,dc=org",
         objectClasses = {"person", "inetOrgPerson", "top"})
 public class User {
     
@@ -34,17 +34,17 @@ public class User {
     @Attribute(name = "mail")
     private String mail;
 
-    @Attribute(name = "initials")
+    @Attribute(name = "userPassword", type = Type.BINARY)
     @JsonIgnore
-    private String password;
+    private byte[] password;
 
-    @Attribute(name = "description")
+    @Attribute(name = "secretQuestion")
     private String question;
 
-    @Attribute(name = "displayName")
+    @Attribute(name = "secretResponse")
     private String answer;
-    
-    @Attribute(name = "labeledURI")
+
+    @Attribute(name = "info")
     @JsonIgnore
     private String gAuthSecret;
     
@@ -93,11 +93,11 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return new String(password);
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password.getBytes();
     }
 
     public String getQuestion() {

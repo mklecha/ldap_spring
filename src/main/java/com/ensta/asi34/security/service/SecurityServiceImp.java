@@ -17,6 +17,7 @@ public class SecurityServiceImp implements SecurityService {
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails instanceof User) {
             User u = (User)userDetails;
+            System.out.println(u.getgAuthSecret());
             return userRepository.findByUsername(u.getUsername());
         }
 
