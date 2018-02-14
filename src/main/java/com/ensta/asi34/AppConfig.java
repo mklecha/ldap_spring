@@ -9,7 +9,6 @@ import org.springframework.data.ldap.repository.config.EnableLdapRepositories;
 import org.springframework.ldap.core.ContextSource;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -23,7 +22,9 @@ class AppConfig {
     @Bean
     ContextSource contextSource() {
         LdapContextSource ldapContextSource = new LdapContextSource();
-        ldapContextSource.setUrl("ldap://localhost:8389");
+        ldapContextSource.setUserDn("cn=admin,dc=ensta,dc=fr");
+        ldapContextSource.setPassword("password");
+        ldapContextSource.setUrl("ldap://104.155.89.33:389");
         return ldapContextSource;
     }
 

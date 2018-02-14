@@ -12,7 +12,7 @@ import javax.naming.Name;
 import org.springframework.ldap.odm.annotations.Attribute.Type;
 
 @Entry(
-        base = "ou=people,dc=springframework,dc=org",
+        base = "ou=people,dc=ensta,dc=fr",
         objectClasses = {"person", "inetOrgPerson", "top"})
 public class User {
     
@@ -34,17 +34,17 @@ public class User {
     @Attribute(name = "mail")
     private String mail;
 
-    @Attribute(name = "userPassword", type = Type.BINARY)
+    @Attribute(name = "initials")
     @JsonIgnore
-    private byte [] password;
+    private String password;
 
-    @Attribute(name = "secretQuestion")
+    @Attribute(name = "description")
     private String question;
 
-    @Attribute(name = "secretResponse")
+    @Attribute(name = "displayName")
     private String answer;
     
-    @Attribute(name = "info")
+    @Attribute(name = "labeledURI")
     @JsonIgnore
     private String gAuthSecret;
     
@@ -93,11 +93,11 @@ public class User {
     }
 
     public String getPassword() {
-        return new String(password);
+        return password;
     }
 
     public void setPassword(String password) {
-        this.password = password.getBytes();
+        this.password = password;
     }
 
     public String getQuestion() {
