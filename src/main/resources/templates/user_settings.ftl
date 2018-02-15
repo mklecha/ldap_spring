@@ -24,6 +24,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/userSettings">User Settings</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/googleAuthentication">Google Authentification</a>
+            </li>
         </ul>
         <form action="/logout">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
@@ -31,9 +34,6 @@
     </div>
 </header>
 <div class="container">
-    <div class="jumbotron">
-        <a href="/googleAuthenticatorQRCode"> View Google Authenticator QR Code</a>
-    </div>
     <div class="jumbotron">
         <div class="container">
             <h1>Change user info</h1>

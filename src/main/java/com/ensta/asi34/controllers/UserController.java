@@ -72,10 +72,7 @@ public class UserController {
 
     }
 
-
     private boolean checkAnswer(String expected, String given) {
         return expected.trim().toLowerCase().equals(given.trim().toLowerCase());
     }
-    
-    
 }

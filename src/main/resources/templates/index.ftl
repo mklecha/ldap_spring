@@ -23,6 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/userSettings">User Settings</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/googleAuthentication">Google Authentification</a>
+            </li>
         </ul>
         <form action="/logout">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log out</button>
