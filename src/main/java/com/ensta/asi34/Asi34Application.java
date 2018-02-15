@@ -9,9 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 @EnableAutoConfiguration
 public class Asi34Application {
-    
+
 
     public static void main(String[] args) {
-            SpringApplication.run(Asi34Application.class, args);
+        SpringApplication.run(Asi34Application.class, args);
     }
 }

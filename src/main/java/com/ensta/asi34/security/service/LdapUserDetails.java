@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ensta.asi34.security.service;
 
 import com.ensta.asi34.model.User;
-import java.util.ArrayList;
-import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
- *
  * @author trident
  */
-public class LdapUserDetails implements UserDetails{
-    
+public class LdapUserDetails implements UserDetails {
+
     private final User user;
- 
+
     public LdapUserDetails(User user) {
         this.user = user;
     }
@@ -62,5 +57,5 @@ public class LdapUserDetails implements UserDetails{
     public String getName() {
         return user.getName();
     }
-    
+
 }

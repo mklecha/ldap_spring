@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableLdapRepositories
 class AppConfig {
-    
+
     @Autowired
     LdapUserDetailsService userDetailsService;
 
@@ -30,16 +30,16 @@ class AppConfig {
     LdapTemplate ldapTemplate(ContextSource contextSource) {
         return new LdapTemplate(contextSource);
     }
-    
-    
+
+
     @Bean
     public CustomAuthenticationProvider authProvider() {
         CustomAuthenticationProvider authProvider = new CustomAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(encoder());
-        return authProvider; 
+        return authProvider;
     }
-    
+
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
