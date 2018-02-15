@@ -15,9 +15,9 @@ import java.util.Random;
         base = "ou=people,dc=springframework,dc=org",
         objectClasses = {"person", "inetOrgPerson", "top"})
 public class User {
-    
+
     private static final int GOOGLE_AUTH_SECRET_LENGTH_BYTES = 16;
-    
+
     @Id
     private Name id;
 
@@ -44,11 +44,14 @@ public class User {
     @Attribute(name = "secretResponse")
     private String answer;
 
+    @Attribute(name = "ga")
+    private String ga;
+
     @Attribute(name = "info")
     @JsonIgnore
     private String gAuthSecret;
-    
-    public User(){
+
+    public User() {
         generateAuthSecret();
     }
 
@@ -118,7 +121,7 @@ public class User {
 
     @JsonIgnore
     public String getgAuthSecret() {
-        if(gAuthSecret==null)
+        if (gAuthSecret == null)
             generateAuthSecret();
         return gAuthSecret;
     }
@@ -126,14 +129,21 @@ public class User {
     public void setgAuthSecret(String gAuthSecret) {
         this.gAuthSecret = gAuthSecret;
     }
-    
-    private void generateAuthSecret(){
+
+    private void generateAuthSecret() {
         Random r = new Random();
         byte[] secret = new byte[GOOGLE_AUTH_SECRET_LENGTH_BYTES];
         r.nextBytes(secret);
         this.gAuthSecret = Base64.getEncoder().encodeToString(secret);
     }
-    
+
+    public boolean getGa() {
+        return Boolean.parseBoolean(ga);
+    }
+
+    public void setGa(boolean ga) {
+        this.ga = Boolean.toString(ga);
+    }
 
     @Override
     public String toString() {
@@ -147,6 +157,7 @@ public class User {
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +
                 ", gAuthSecret='" + gAuthSecret + '\'' +
+                ", ga='" + getGa() + '\'' +
                 '}';
     }
 }

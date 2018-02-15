@@ -34,10 +34,13 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
         if (!user.getPassword().equals(auth.getCredentials().toString()))
             throw new BadCredentialsException("Invalid username or password");
 
+        //todo check if GA is turned on
         Totp totp = new Totp(user.getgAuthSecret());
         if (!isValidLong(details.getVerificationCode()) || !totp.verify(details.getVerificationCode())) {
             throw new BadCredentialsException("Invalid verfication code");
         }
+        //
+        
         return new UsernamePasswordAuthenticationToken(
                 user, auth.getCredentials(), auth.getAuthorities());
     }

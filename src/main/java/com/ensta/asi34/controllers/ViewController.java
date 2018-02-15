@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ensta.asi34.controllers;
 
 import com.ensta.asi34.model.repository.UserRepository;
@@ -16,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ViewController {
-
-
     @Autowired
     UserRepository repository;
 
@@ -30,6 +23,4 @@ public class ViewController {
     public String userSettings() {
         return "user_settings";
     }
-    
-
 }
