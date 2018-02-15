@@ -42,12 +42,15 @@ cn: Bob
 sn: Hamilton
 uid: bob
 userPassword: bob
+info: xxJHQr7SGvn2wg5oNgPWSL==
 mail: bob.alex@mail.com
 changeType: modify
 add: secretQuestion
 secretQuestion: What is your favorite colour?
 add: secretResponse
 secretResponse: red
+add: ga
+ga: false
 
 dn: uid=joe,ou=people,dc=springframework,dc=org
 objectclass: top
@@ -58,9 +61,12 @@ cn: Joe
 sn: Smeth
 uid: joe
 userPassword: joespassword
+info: aaAHQj2SGvm2wg9oNgPWSX==
 mail: joe.alex@mail.com
 changeType: modify
 add: secretQuestion
 secretQuestion: What is your favorite colour?
 add: secretResponse
 secretResponse: yellow
+add: ga
+ga: false
