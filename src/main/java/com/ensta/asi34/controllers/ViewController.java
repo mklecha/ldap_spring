@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ViewController {
+
     @Autowired
     UserRepository repository;
 
@@ -18,7 +19,7 @@ public class ViewController {
     public String index(Model model) {
         return "index";
     }
-    
+
     @GetMapping("/userSettings")
     public String userSettings() {
         return "user_settings";

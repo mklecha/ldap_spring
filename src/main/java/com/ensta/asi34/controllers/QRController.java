@@ -1,11 +1,13 @@
 package com.ensta.asi34.controllers;
 
 import com.ensta.asi34.model.User;
+import com.ensta.asi34.model.repository.UserRepository;
 import com.ensta.asi34.security.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -18,6 +20,21 @@ public class QRController {
 
     @Autowired
     private SecurityService securityService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/changeGA-{cmd}")
+    public String changeGA(Model model, @PathVariable String cmd) {
+        User loggedUser = securityService.findLoggedInUser();
+        if (cmd.equals("on")) {
+            loggedUser.setGa(true);
+        } else if (cmd.equals("off")) {
+            loggedUser.setGa(false);
+        }
+        userRepository.save(loggedUser);
+        return "google_qr";
+    }
 
     @GetMapping("/googleAuthentication")
     public String googleAuthenticatorQRCode(Model model) throws UnsupportedEncodingException {
