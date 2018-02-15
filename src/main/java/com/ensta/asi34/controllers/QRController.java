@@ -33,7 +33,7 @@ public class QRController {
             loggedUser.setGa(false);
         }
         userRepository.save(loggedUser);
-        return "google_qr";
+        return "redirect:/googleAuthentication";
     }
 
     @GetMapping("/googleAuthentication")

@@ -31,7 +31,7 @@ secretQuestion: What is your favorite colour?
 add: secretResponse
 secretResponse: blue
 add: ga
-ga: true
+ga: false
 
 dn: uid=bob,ou=people,dc=springframework,dc=org
 objectclass: top
@@ -41,13 +41,13 @@ objectclass: inetOrgPerson
 cn: Bob
 sn: Hamilton
 uid: bob
-userPassword: bobspassword
+userPassword: bob
 mail: bob.alex@mail.com
 changeType: modify
 add: secretQuestion
 secretQuestion: What is your favorite colour?
 add: secretResponse
-secretResponse: blue
+secretResponse: red
 
 dn: uid=joe,ou=people,dc=springframework,dc=org
 objectclass: top
@@ -63,4 +63,4 @@ changeType: modify
 add: secretQuestion
 secretQuestion: What is your favorite colour?
 add: secretResponse
-secretResponse: blue
+secretResponse: yellow

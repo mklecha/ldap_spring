@@ -7,6 +7,7 @@ package com.ensta.asi34.security.gauth;
 
 import com.ensta.asi34.model.User;
 import com.ensta.asi34.model.repository.UserRepository;
+import org.jboss.aerogear.security.otp.Totp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,13 +34,13 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
         if (!user.getPassword().equals(auth.getCredentials().toString()))
             throw new BadCredentialsException("Invalid username or password");
 
-        //todo check if GA is turned on
-//        Totp totp = new Totp(user.getgAuthSecret());
-//        if (!isValidLong(details.getVerificationCode()) || !totp.verify(details.getVerificationCode())) {
-//            throw new BadCredentialsException("Invalid verfication code");
-//        }
-        //
-        
+        if (user.getGa()) {
+            Totp totp = new Totp(user.getgAuthSecret());
+            if (!isValidLong(details.getVerificationCode()) || !totp.verify(details.getVerificationCode())) {
+                throw new BadCredentialsException("Invalid verfication code");
+            }
+        }
+
         return new UsernamePasswordAuthenticationToken(
                 user, auth.getCredentials(), auth.getAuthorities());
     }

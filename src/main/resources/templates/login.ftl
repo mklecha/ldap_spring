@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>ENSTA LDAP - Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -42,7 +42,7 @@
                 </span>
                 <#if error??>
                     <span class="login100-form-title p-b-26" style="color:red;">
-                        Wrong login or password
+                        Wrong login, password or verification code
                     </span>
                 </#if>
                 <span class="login100-form-title p-b-48">
@@ -62,12 +62,13 @@
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter verification code">
+                <div class="wrap-input100">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="code">
-                    <span class="focus-input100" data-placeholder="Verification code"></span>
+                    <input class="input100" type="password" name="code" style="height: 80px;">
+                    <span class="focus-input100"
+                          data-placeholder="Verification code (leave empty if you don't use it)"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
@@ -79,7 +80,7 @@
                     </div>
                 </div>
 
-                <div class="text-center p-t-115">
+                <div class="text-center p-t-50">
 						<span class="txt1">
 							Forgotten password?
 						</span>

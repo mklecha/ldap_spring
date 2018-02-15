@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>ENSTA LDAP - Google Authentication</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -35,20 +35,31 @@
 </header>
 <div class="container">
     <div class="jumbotron">
-        <div id="qr">
-            <p>
-                Scan this Barcode using Google Authenticator app on your phone
-                to use it later in login
-            </p>
-            <img src="${qr}"/>
-        </div>
+        <#if loggedUser.ga>
+            <div id="qr">
+                <h2>Google Authentication is on</h2>
+                <p>
+                    Scan this Barcode using Google Authenticator app on your phone
+                    to use it later in login
+                </p>
+                <img src="${qr}"/>
+            </div>
+            <div class="mt-2">
+                <a href="/changeGA-off">
+                    <button class="btn btn-secondary">Click here to turn it off</button>
+                </a>
+            </div>
+        <#else>
+            <h2>Google Authentication is off</h2>
+            <div class="mt-2">
+                <a href="/changeGA-on">
+                    <button class="btn btn-secondary">Click here to turn it on</button>
+                </a>
+            </div>
+        </#if>
     </div>
-
 </div>
-
-
 </body>
-
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </html>
